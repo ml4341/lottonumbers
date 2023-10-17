@@ -44,7 +44,9 @@ document.querySelector("#seeComb").addEventListener("click", (e) => {
     			oneNumber(numBalls);
     			break;
   		case "2":
+  			document.getElementsByClassName("spinner-self")[0].classList.remove("hidden");
   			twoNumber(numBalls);
+  			document.getElementsByClassName("spinner-self")[0].classList.add("hidden");
   			break;
   		case "3":
     			threeNumber(numBalls);
@@ -95,6 +97,9 @@ function printLine(line){
 	let p = document.createElement("p");
 	p.id = count;
 	p.textContent = line;
+	p.classList.add("line");
+	p.style.textAlign = "center";
+	p.style.fontSize = "20px";
 	wrapper.appendChild(p);
 };
 
@@ -297,4 +302,34 @@ function sevenNumber(total){
 		}
 	}
 };
+
+
+function filterLines(by, value) 
+{
+	let newLines = [];
+	if (by.includes("below"))
+	{
+		newLines = document.getElementsByClassName("line");
+		newLines = Array.prototype.filter.call(
+  newLines, (line) => Number(line.textContent.substring(0, line.textContent.indexOf("-"))) < value);
+		
+		console.log(newLines);
+	}
+	
+		
+};
+
+
+document.getElementById("filterby").addEventListener("change", (e) => {
+	let oldLines = document.getElementsByClassName("line");
+	
+	Array.prototype.forEach.call(
+  oldLines, (line) => line.remove());
+  
+	let optionValue = e.target.value;
+	let optionText = e.target.options[e.target.options.selectedIndex].text;
+	
+	filterLines(optionText, optionValue); 
+});
+
 

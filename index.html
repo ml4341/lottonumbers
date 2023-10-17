@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Numbers Page</title>
+    <link href="https://fonts.cdnfonts.com/css/flavors-2" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-  <h1> Welcome to My Lucky Number's Generator!</h1>
+  <h1 class="wlcm-logo"> Welcome to My Lucky Number's Generator!</h1>
   <h2>See all 3 number posible combinations below. Pick a random line by clicking the **Generate** button.</h2>
   
   
@@ -47,6 +48,10 @@
   	 <div class="button">
     		<button id="seeComb" type="button">See Combinations</button>
   	</div>
+  	
+  	<div class="spinner-parrent hidden loadingio-spinner-spin-b224qdrx0v"><div class="spinner-self hidden ldio-ysdfcau2qt">
+		<div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+		</div></div>
   </div>
   
   
@@ -57,6 +62,16 @@
   		<div id="combinations">
 	  		<p>Here are all the 3 number combinations for your draw.<p>
 	  		<p>You can pick a random line by clicking the Get Random Line button.<p></div>
+	  	
+	  	<label for="filterby">Filter by:</label> <br />	
+	  		
+		<select name="filterby" id="filterby">
+		     <option value="">Select an option: </option>
+		     <option value=5>First number below 5</option>
+		     <option value=10>First number below 10</option>
+		</select>
+		
+		
 	  	<section id="randomSection">
 	  		<button id="generate" class="gen-button" role="button">Get Random Line</button>	
 	  	</section>
