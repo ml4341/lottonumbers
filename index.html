@@ -5,62 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Numbers Page</title>
+    <link href="https://fonts.cdnfonts.com/css/flavors-2" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-  <h1> Welcome to My Lucky Number's Generator!</h1>
-  <h2>See all 3 number posible combinations below. Pick a random line by clicking the **Generate** button.</h2>
-  
-  
-  
-  
-  <div class="center">
-  	<h3>Show Combinations</h3>
-  	
-  	<label for="nbpl">Number of Balls Per Line:</label> <br />
-	<select name="nbpl" id="nbpl">
-	  <option value=1 selected>1 Number</option>
-	  <option value=2>2 Numbers</option>
-	  <option value=3>3 Numbers</option>
-	  <option value=4>4 Numbers</option>
-	  <option value=5>5 Numbers</option>
-	  <option value=6>6 Numbers</option>
-	  <option value=7>7 Numbers</option>
-	</select>
-	
-	<br/> <br />
-  	<label for="numballs">Total Number of Balls to Select From: </label> <br />
-	<select name="numballs" id="numballs">
-	  <option value=10 selected>10</option>
-	  <option value=20>20</option>
-	  <option value=25>25</option>
-	  <option value=36>36</option>
-	  <option value=45>45</option>
-	  <option value=49>49</option>
-	  <option value=50>50</option>
-	  <option value=52>52</option>
-	  <option value=70>70</option>
-	  <option value=90>90</option>
-	</select>
-	
-	<br />
-  	 <div class="button">
-    		<button id="seeComb" type="button">See Combinations</button>
-  	</div>
-  </div>
-  
-  
-  
-  
-  
-  	<div id="wrap" class="center">
-  		<div id="combinations">
-	  		<p>Here are all the 3 number combinations for your draw.<p>
-	  		<p>You can pick a random line by clicking the Get Random Line button.<p></div>
-	  	<section id="randomSection">
-	  		<button id="generate" class="gen-button" role="button">Get Random Line</button>	
-	  	</section>
-  	</div>
-	<script src="index.js"></script>
+     <header>
+  	<h1 class="wlcm-logo"> Feeling Lucky?</h1>
+  	<p>Get possible number combinations for various lottory systems around the world.</p>
+    </header>
+    
+    <main>
+    	<section>
+    		<h4>See possible combinations</h4>
+    		<div>
+    			<div class="inline-controls">
+    				<label for="nbpl">Number of Balls Per Line:</label>
+				<select name="nbpl" id="nbpl">
+				  <option value=1 selected>1 Number</option>
+				  <option value=2>2 Numbers</option>
+				  <option value=3>3 Numbers</option>
+				  <option value=4>4 Numbers</option>
+				  <option value=5>5 Numbers</option>
+				  <option value=6>6 Numbers</option>
+				  <option value=7>7 Numbers</option>
+				</select>
+			</div>
+			
+			<div class="inline-controls">
+				<label for="numballs">Total Number of Balls to Select From: </label>
+				<select name="numballs" id="numballs">
+				  <option value=10 selected>10</option>
+				  <option value=20>20</option>
+				  <option value=25>25</option>
+				  <option value=36>36</option>
+				  <option value=45>45</option>
+				  <option value=49>49</option>
+				  <option value=50>50</option>
+				  <option value=52>52</option>
+				  <option value=70>70</option>
+				</select>
+			</div>
+			
+			
+			<h6>Additional criteria</h6>
+			<div class="inline-controls-more">
+				<label for="firstSmallNumber">First smallest number: </label> <br />
+				
+				<select name="firstSmallRange" id="firstSmallRange">
+				  <option value="none" selected>Not Applicable</option>
+				  <option value="below">Below</option>
+				  <option value="above">Above</option>
+			  	</select>
+			  	
+			  	<select name="firstSmallValue" id="firstSmallValue">
+			  	  <option value="none" selected>Not Applicable</option>
+				  <option value=5>5</option>
+				  <option value=10>10</option>
+				  <option value=20>20</option>
+			  	</select>
+		  	</div>
+		  	
+		  	<fieldset>
+			  <legend>Refine your search:</legend>
+
+			  <div>
+			    <input type="checkbox" id="consecutive" name="consecutive" checked />
+			    <label for="consecutive">No line with 3 or More consecutive numbers</label>
+			  </div>
+			</fieldset>
+
+		  	
+		  	<button id="seeComb">Generate Combinations</button>
+    		</div>
+    		
+    		<div id="combinationsWrapper"></div>
+    	</section>
+    	    	
+    	<section id="randomLineSection">
+    		<h4>Pick random lines to Play</h4>
+    		<div class="inline-controls">
+	    		<label for="randomLinesNumber">How many lines to pick?</label>
+			<select name="randomLinesNumber" id="randomLinesNumber">
+			  	<option value=5>5</option>
+			  	<option value=6>6</option>
+			  	<option value=10>10</option>
+			  	<option value=25>25</option>
+			  	<option value=50>50</option>
+			  	<option value=75>75</option>
+			  	<option value=100>100</option>
+			</select>
+			
+			<button id="btnPicker">Pick Lines</button>
+		</div>
+				
+    		<div id="randomLinesWrapper"></div>
+    	</section>
+    </main>
+    <script src="index.js"></script>
   </body>
 </html>
