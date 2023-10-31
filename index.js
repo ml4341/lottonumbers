@@ -61,25 +61,26 @@ function cutEnd(text){
 
 // Counter functions 
 function oneNumber(total){
+	let para = "";
 	for (a=1; a<= total; a++)
 	{
-		//printLine(a);
 		count += 1;
-		para += `<p id=${count}>${a}</p>`
+		para += `<li id=${count}>${a}</li>`
 	}
+		
 	printLineX(wrapper, para);
 };
 
 function twoNumber(total){
+	let para = "";
 	for (a=1; a<= total - 1; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
 		{
 			line += "-" + b;
-			//printLine(line);
 			count += 1;
-			para += `<p id=${count}>${line}</p>`
+			para += `<li id=${count}>${line}</li>`
 			line = cutEnd(line);
 		}
 	}
@@ -87,6 +88,374 @@ function twoNumber(total){
 };
 
 
+function threeNumberR(total){
+	for (a=1; a<= total - 2; a++)
+	{
+		line = a;
+		for (b=a+1; b<= total; b++)
+		{
+			line += "-" + b;
+			for (c=b+1; c<= total; c++)
+			{	
+				if (b === a+1 && c === b+1)
+					continue;
+				line += "-" + c;
+				count += 1;
+				para += `<li id=${count}>${line}</li>`
+				line = cutEnd(line);
+			}
+			line = cutEnd(line);
+		}
+	}
+	
+	printLineX(wrapper, para);
+};
+
+
+function fourNumberR(total){
+	for (a=1; a<= total - 2; a++)
+	{
+		line = a;
+		for (b=a+1; b<= total; b++)
+		{
+			line += "-" + b;
+			for (c=b+1; c<= total; c++)
+			{	
+				if (b === a+1 && c === b+1)
+					continue;
+				line += "-" + c;
+				
+				for (d=c+1; d<= total; d++)
+				{
+					if (c === b+1 && d === c+1)
+						continue;
+					line += "-" + d;
+					count += 1;
+					para += `<li id=${count}>${line}</li>`
+					line = cutEnd(line);
+				}
+				line = cutEnd(line);
+			}
+			line = cutEnd(line);
+		}
+	}
+	printLineX(wrapper, para);
+};
+
+
+function fiveNumberR(total){
+	let para = "";
+	for (a=1; a<= total - 2; a++)
+	{
+		line = a;
+		if (a == 10)
+			break;
+			
+		for (b=a+1; b<= total; b++)
+		{
+			line += "-" + b;
+			for (c=b+1; c<= total; c++)
+			{
+				if (b === a+1 && c === b+1)
+					continue;
+				line += "-" + c;
+				
+				for (d=c+1; d<= total; d++)
+				{
+					if (c === b+1 && d === c+1)
+						continue;
+					line += "-" + d;
+
+					for (e=d+1; e<= total; e++)
+					{
+						if (d === c+1 && e === d+1)
+							continue;
+						line += "-" + e;
+						count += 1;
+						para += `<li id=${count}>${line}</li>`
+						line = cutEnd(line);
+					}
+					line = cutEnd(line);
+				}
+				line = cutEnd(line);
+			}
+			line = cutEnd(line);
+		}
+		
+	}
+	printLineX(wrapper, para);
+};
+
+
+function sixNumberR(total){
+	for (a=1; a<= total - 2; a++)
+	{
+		line = a;
+		for (b=a+1; b<= total; b++)
+		{
+			line += "-" + b;
+			for (c=b+1; c<= total; c++)
+			{
+				if (b === a+1 && c === b+1)
+					continue;
+				line += "-" + c;
+				
+				for (d=c+1; d<= total; d++)
+				{
+					if (c === b+1 && d === c+1)
+						continue;
+					line += "-" + d;
+					
+					for (e=d+1; e<= total; e++)
+					{
+						if (d === c+1 && e === d+1)
+							continue;
+						line += "-" + e;
+
+						for (f=e+1; f<= total; f++)
+						{
+							if (e === d+1 && f === e+1)
+								continue;
+							line += "-" + f;
+							count += 1;
+							para += `<li id=${count}>${line}</li>`
+							line = cutEnd(line);
+						}
+						line = cutEnd(line);
+					}
+					line = cutEnd(line);
+				}
+				line = cutEnd(line);
+			}
+			line = cutEnd(line);
+		}
+	}
+	printLineX(wrapper, para);
+};
+
+function sevenNumberR(total){
+	for (a=1; a<= total - 2; a++)
+	{
+		line = a;
+		for (b=a+1; b<= total; b++)
+		{
+			line += "-" + b;
+			for (c=b+1; c<= total; c++)
+			{
+				if (b === a+1 && c === b+1)
+					continue;
+				line += "-" + c;
+				
+				for (d=c+1; d<= total; d++)
+				{
+					if (c === b+1 && d === c+1)
+						continue;
+					line += "-" + d;
+					
+					for (e=d+1; e<= total; e++)
+					{
+						if (d === c+1 && e === d+1)
+							continue;
+						line += "-" + e;
+						
+						for (f=e+1; f<= total; f++)
+						{
+							if (e === d+1 && f === e+1)
+								continue;
+							line += "-" + f;
+
+							for (g=f+1; g<= total; g++)
+							{
+								if (f === e+1 && g === f+1)
+									continue;
+								line += "-" + g;
+								count += 1;
+								para += `<li id=${count}>${line}</li>`
+								line = cutEnd(line);
+							}
+							line = cutEnd(line);
+						}
+						line = cutEnd(line);
+					}
+					line = cutEnd(line);
+				}
+				line = cutEnd(line);
+			}
+			line = cutEnd(line);
+		}
+	}
+	printLineX(wrapper, para);
+};
+
+// Event Listeners...
+// Scroll to the view of the line Selected
+/*
+gebyid("generate").addEventListener("click", () => {
+	let randomLine = Math.floor(Math.random() * count);
+
+	console.log("LINES NUMBER: ",count);
+	console.log("Random Line: ",randomLine);
+  	let target = gebyid(randomLine);
+  	target.style.color = "red";
+  	
+  	let rect = target.getBoundingClientRect();
+  	
+  	window.scrollTo({
+  		top: rect.top - 50,
+  		left: rect.left,
+  		behavior: "smooth",
+	});
+
+	for (const key in rect) {
+  		if (typeof rect[key] !== "function") {
+    	
+    		console.log(`${key} : ${rect[key]}`);
+  	}
+}
+  
+});
+
+*/
+function callNumberFunctions(){
+	const consecutiveChecked = gebyid("consecutive").checked;
+	numBalls = gebyid("numballs").value;
+	nbpl = gebyid("nbpl").value;
+	let textContent = "";
+	switch (nbpl) 
+	{
+  		case "1":
+    			oneNumber(numBalls);
+    			break;
+  		case "2":
+		  	twoNumber(numBalls);
+  			break;
+  		case "3":
+  			if (consecutiveChecked)
+    				threeNumberR(numBalls);
+			else
+				threeNumber(numBalls);
+    			break;
+    		case "4":
+    			if (consecutiveChecked)
+    				fourNumberR(numBalls);
+			else
+    				fourNumber(numBalls);
+    			break;
+		case "5":
+    			if (consecutiveChecked)
+    				fiveNumberR(numBalls);
+			else
+    				fiveNumber(numBalls);
+    			break;
+		case "6":
+			if (consecutiveChecked)
+    				sixNumberR(numBalls);
+			else
+    				sixNumber(numBalls);
+    			break;
+		case "7":
+    			if (consecutiveChecked)
+    				sevenNumberR(numBalls);
+			else
+    				sevenNumber(numBalls);
+    			break;
+		default:
+   			console.log(`Sorry, we are out of error.`);
+	};
+};
+
+// Display all 3 Number Combinations
+gebyid("seeComb").addEventListener("click", (e) => {
+	callNumberFunctions();	
+});
+
+
+// removes element from the dom
+function removeE(id){
+  gebyid(id).remove();
+};
+
+// gebyid("remove").addEventListener("click", () => removeE("linesSection"));
+
+// replaces document.getElementById(
+function gebyid(id){
+	return document.getElementById(id);
+};
+
+// TBC
+gebyid("btnPicker").addEventListener("click", () => {
+    let numberOfLines = gebyid("randomLinesNumber").value;
+    printRandomLines(numberOfLines);
+});
+
+function getRandomNumbers(howMany){
+    let arr = []; 
+    let ran = Math.floor((Math.random() * count) + 1);
+
+    for (let i = 1; i <= howMany; i++){
+        if (arr.includes(ran) !== true){
+            arr.push(ran);
+        }
+        else{
+            i -= 1;
+        }
+        ran = Math.floor((Math.random() * count) + 1);
+    }
+    
+    return arr;
+}
+
+function printRandomLines(numberOfLines){
+    let para = "";
+
+    	let randomLines = getRandomNumbers(numberOfLines);
+    	console.log(randomLines)
+        randomLines.forEach((num, index) => {
+	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+        });
+
+    printLineX(randomLinesWrapper, para);   
+};
+
+function checkSetArrFunction(list) {
+	let setArr = [];
+	let index1 = 0;
+	let index2 = 0;
+
+	for (let i = 0; i < list.length; i++){
+	    
+	    index1 = list[i].split("-")[0];
+	    index2 = list[i].split("-")[1];
+	    
+	    if (!setArr.includes(index1))
+		setArr.push(index1)
+	    if (!setArr.includes(index2))
+		setArr.push(index2)
+	}
+
+	if (setArr.length !== 5)
+	{
+	    console.log("Lines do not belong to a set!");
+	    return false;
+        }
+	else
+	{
+	     console.log("Lines form a partion of the following set: !", setArr);
+	     return setArr;
+        }
+        
+        
+        
+        
+        
+        
+	     
+};
+
+
+
+// Previous combination generating functions
+// Counter functions 
 function threeNumber(total){
 	for (a=1; a<= total - 2; a++)
 	{
@@ -97,12 +466,8 @@ function threeNumber(total){
 			for (c=b+1; c<= total; c++)
 			{
 				line += "-" + c;
-		
-				//printLine(line);
-				//if (c 
 				count += 1;
-				para += `<p id=${count}>${line}</p>`
-				
+				para += `<li id=${count}>${line}</li>`
 				line = cutEnd(line);
 			}
 			line = cutEnd(line);
@@ -127,9 +492,8 @@ function fourNumber(total){
 				for (d=c+1; d<= total; d++)
 				{
 					line += "-" + d;
-					//printLine(line);
 					count += 1;
-					para += `<p id=${count}>${line}</p>`
+					para += `<li id=${count}>${line}</li>`
 					line = cutEnd(line);
 				}
 				line = cutEnd(line);
@@ -142,10 +506,11 @@ function fourNumber(total){
 
 
 function fiveNumber(total){
+	let p = "";
 	for (a=1; a<= total - 2; a++)
 	{
 		line = a;
-		if (a == 3)
+		if (a == 10)
 			break;
 			
 		for (b=a+1; b<= total; b++)
@@ -162,9 +527,8 @@ function fiveNumber(total){
 					for (e=d+1; e<= total; e++)
 					{
 						line += "-" + e;
-						//printLine(line);
 						count += 1;
-						para += `<p id=${count}>${line}</p>`
+						p += `<li id=${count}>${line}</li>`
 						line = cutEnd(line);
 					}
 					line = cutEnd(line);
@@ -173,10 +537,10 @@ function fiveNumber(total){
 			}
 			line = cutEnd(line);
 		}
+		
 	}
-	
-	printLineX(wrapper, para);
-};
+	printLineX(wrapper, p);
+}
 
 
 function sixNumber(total){
@@ -201,9 +565,8 @@ function sixNumber(total){
 						for (f=e+1; f<= total; f++)
 						{
 							line += "-" + f;
-							//printLine(line);
 							count += 1;
-							para += `<p id=${count}>${line}</p>`
+							para += `<li id=${count}>${line}</li>`
 							line = cutEnd(line);
 						}
 						line = cutEnd(line);
@@ -244,9 +607,8 @@ function sevenNumber(total){
 							for (g=f+1; g<= total; g++)
 							{
 								line += "-" + g;
-								//printLine(line);
 								count += 1;
-								para += `<p id=${count}>${line}</p>`
+								para += `<li id=${count}>${line}</li>`
 								line = cutEnd(line);
 							}
 							line = cutEnd(line);
@@ -261,173 +623,6 @@ function sevenNumber(total){
 		}
 	}
 	printLineX(wrapper, para);
-};
-
-
-function filterLines(by, value) 
-{
-	let newLines = [];
-	if (by.includes("below"))
-	{
-		newLines = document.getElementsByClassName("line");
-		newLines = Array.prototype.filter.call(
-  newLines, (line) => Number(line.textContent.substring(0, line.textContent.indexOf("-"))) < value);
-		
-		console.log(newLines);
-	}
-	
-		
-};
-
-// Event Listeners...
-// Scroll to the view of the line Selected
-/*
-gebyid("generate").addEventListener("click", () => {
-	let randomLine = Math.floor(Math.random() * count);
-
-	console.log("LINES NUMBER: ",count);
-	console.log("Random Line: ",randomLine);
-  	let target = gebyid(randomLine);
-  	target.style.color = "red";
-  	
-  	let rect = target.getBoundingClientRect();
-  	
-  	window.scrollTo({
-  		top: rect.top - 50,
-  		left: rect.left,
-  		behavior: "smooth",
-	});
-
-	for (const key in rect) {
-  		if (typeof rect[key] !== "function") {
-    	
-    		console.log(`${key} : ${rect[key]}`);
-  	}
-}
-  
-});
-
-*/
-
-// Display all 3 Number Combinations
-gebyid("seeComb").addEventListener("click", (e) => {
-	numBalls = gebyid("numballs").value;
-	nbpl = gebyid("nbpl").value;
-
-	switch (nbpl) 
-	{
-  		case "1":
-    			oneNumber(numBalls);
-    			break;
-  		case "2":
-		  	twoNumber(numBalls);
-  			break;
-  		case "3":
-    			threeNumber(numBalls);
-    			break;
-    		case "4":
-    			fourNumber(numBalls);
-    			break;
-		case "5":
-    			fiveNumber(numBalls);
-    			break;
-		case "6":
-    			sixNumber(numBalls);
-    			break;
-		case "7":
-    			sevenNumber(numBalls);
-    			break;
-		default:
-   			console.log(`Sorry, we are out of error.`);
-	};
-	//gebyid("wrap").style.display="flex";
-});
-
-
-// removes element from the dom
-function removeE(id){
-  gebyid(id).remove();
-};
-
-// gebyid("remove").addEventListener("click", () => removeE("linesSection"));
-
-// replaces document.getElementById(
-function gebyid(id){
-	return document.getElementById(id);
-	
-	
-	
-	//TBC
-	
-	
-	
-};
-
-
-
-
-// TBC
-gebyid("btnPicker").addEventListener("click", () => {
-    let numberOfLines = gebyid("randomLinesNumber").value;
-    printRandomLines(numberOfLines);
-});
-
-function getRandomNumbers(howMany){
-    let arr = []; 
-    let ran = Math.floor((Math.random() * count) + 1);
-
-    for (let i = 1; i <= howMany; i++){
-        if (arr.includes(ran) !== true){
-            arr.push(ran);
-        }
-        else{
-            i -= 1;
-        }
-        ran = Math.floor((Math.random() * count) + 1);
-    }
-    
-    return arr;
-}
-
-function printRandomLines(numberOfLines){
-    let p = "";
-
-    	let randomLines = getRandomNumbers(numberOfLines);
-    	console.log(randomLines)
-        randomLines.forEach((num) => {
-	    p += `<p id=${count}>${gebyid(num).textContent}</p>`
-        });
-
-    printLineX(randomLinesWrapper, p);   
-};
-
-function checkSetArrFunction(list) {
-	let setArr = [];
-	let index1 = 0;
-	let index2 = 0;
-
-	for (let i = 0; i < list.length; i++){
-	    
-	    index1 = list[i].split("-")[0];
-	    index2 = list[i].split("-")[1];
-	    
-	    if (!setArr.includes(index1))
-		setArr.push(index1)
-	    if (!setArr.includes(index2))
-		setArr.push(index2)
-	}
-
-	if (setArr.length !== 5)
-	{
-	    console.log("Lines do not belong to a set!");
-	    return false;
-        }
-	else
-	{
-	     console.log("Lines form a partion of the following set: !", setArr);
-	     return setArr;
-        }
-	     
 };
 
 
