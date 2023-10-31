@@ -48,26 +48,21 @@
 			
 			
 			<h6>Additional criteria</h6>
-			<div class="inline-controls-more">
-				<label for="firstSmallNumber">First smallest number: </label> <br />
-				
-				<select name="firstSmallRange" id="firstSmallRange">
-				  <option value="none" selected>Not Applicable</option>
-				  <option value="below">Below</option>
-				  <option value="above">Above</option>
-			  	</select>
-			  	
-			  	<select name="firstSmallValue" id="firstSmallValue">
-			  	  <option value="none" selected>Not Applicable</option>
-				  <option value=5>5</option>
-				  <option value=10>10</option>
-				  <option value=20>20</option>
-			  	</select>
-		  	</div>
 		  	
 		  	<fieldset>
 			  <legend>Refine your search:</legend>
-
+			  
+			   <div class="inline-controls-more">
+				<label for="firstSmallNumber">First smallest number start at: </label> <br />
+			  	<select name="firstSmallValue" id="firstSmallValue">
+			  	  <option value=1 selected>1</option>
+				  <option value=5>5</option>
+				  <option value=10>10</option>
+				  <option value=20>20</option>
+				  <option value=30>30</option>
+			  	</select>
+		  	  </div>
+		  	
 			  <div>
 			    <input type="checkbox" id="consecutive" name="consecutive"/>
 			    <label for="consecutive">No line with 3 or More consecutive numbers</label>

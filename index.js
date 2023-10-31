@@ -3,7 +3,6 @@ let randomLinesWrapper = gebyid("randomLinesWrapper");
 let numBalls = 0;
 let lines = [];
 let line = "";
-let para = "";
 let count = 0;
 let spinner = `XXXX <div class="loadingio-spinner-spin-b224qdrx0v"><div class="spinner-self ldio-ysdfcau2qt">
 		<div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
@@ -61,8 +60,9 @@ function cutEnd(text){
 
 // Counter functions 
 function oneNumber(total){
+	const small = Number(gebyid("firstSmallValue").value);
 	let para = "";
-	for (a=1; a<= total; a++)
+	for (a=small; a<= total; a++)
 	{
 		count += 1;
 		para += `<li id=${count}>${a}</li>`
@@ -72,8 +72,9 @@ function oneNumber(total){
 };
 
 function twoNumber(total){
+	const small = Number(gebyid("firstSmallValue").value);
 	let para = "";
-	for (a=1; a<= total - 1; a++)
+	for (a=small; a<= total - 1; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -89,7 +90,9 @@ function twoNumber(total){
 
 
 function threeNumberR(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -113,7 +116,8 @@ function threeNumberR(total){
 
 
 function fourNumberR(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -144,8 +148,9 @@ function fourNumberR(total){
 
 
 function fiveNumberR(total){
+	const small = Number(gebyid("firstSmallValue").value);
 	let para = "";
-	for (a=1; a<= total - 2; a++)
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		if (a == 10)
@@ -188,7 +193,9 @@ function fiveNumberR(total){
 
 
 function sixNumberR(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -234,7 +241,9 @@ function sixNumberR(total){
 };
 
 function sevenNumberR(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -406,10 +415,9 @@ function getRandomNumbers(howMany){
 }
 
 function printRandomLines(numberOfLines){
-    let para = "";
-
+    	let para = "";
     	let randomLines = getRandomNumbers(numberOfLines);
-    	console.log(randomLines)
+    	//console.log(randomLines)
         randomLines.forEach((num, index) => {
 	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
         });
@@ -457,7 +465,9 @@ function checkSetArrFunction(list) {
 // Previous combination generating functions
 // Counter functions 
 function threeNumber(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -479,7 +489,9 @@ function threeNumber(total){
 
 
 function fourNumber(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -506,8 +518,9 @@ function fourNumber(total){
 
 
 function fiveNumber(total){
-	let p = "";
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		if (a == 10)
@@ -528,7 +541,7 @@ function fiveNumber(total){
 					{
 						line += "-" + e;
 						count += 1;
-						p += `<li id=${count}>${line}</li>`
+						para += `<li id=${count}>${line}</li>`
 						line = cutEnd(line);
 					}
 					line = cutEnd(line);
@@ -544,7 +557,9 @@ function fiveNumber(total){
 
 
 function sixNumber(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
@@ -582,7 +597,9 @@ function sixNumber(total){
 };
 
 function sevenNumber(total){
-	for (a=1; a<= total - 2; a++)
+	const small = Number(gebyid("firstSmallValue").value);
+	let para = "";
+	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
 		for (b=a+1; b<= total; b++)
