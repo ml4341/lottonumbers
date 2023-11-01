@@ -1,2 +1,4 @@
-Organised Refine search section
-Added functionality of defining the first small number on a line
+Add Clear Buttons
+Hide between clear and Generate buttons
+Added style to the buttons
+Reset select element value when the clear button is pressed

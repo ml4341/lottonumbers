@@ -325,6 +325,12 @@ gebyid("generate").addEventListener("click", () => {
 });
 
 */
+
+function hideButtons() {
+	gebyid("seeComb").classList.add("hidden");
+	gebyid("clearComb").classList.remove("hidden");
+}
+
 function callNumberFunctions(){
 	const consecutiveChecked = gebyid("consecutive").checked;
 	numBalls = gebyid("numballs").value;
@@ -371,13 +377,42 @@ function callNumberFunctions(){
 		default:
    			console.log(`Sorry, we are out of error.`);
 	};
+	hideButtons();
 };
 
 // Display all 3 Number Combinations
 gebyid("seeComb").addEventListener("click", (e) => {
-	callNumberFunctions();	
+	gebyid("seeComb").setAttribute('disabled', '');
+	gebyid("clearComb").removeAttribute('disabled');
+	callNumberFunctions();
+	
+	gebyid("randomLineSection").classList.remove("hidden");
 });
 
+gebyid("clearComb").addEventListener("click", (e) => {
+	count = 0;
+	gebyid("clearComb").setAttribute('disabled', '');
+	gebyid("seeComb").removeAttribute('disabled');
+	gebyid("linesSection").remove();
+	gebyid("clearComb").classList.add("hidden");
+	gebyid("seeComb").classList.remove("hidden");	
+	
+	let sec = gebyid("randomlinesSec");
+	if (sec !== null){
+		gebyid("btnPicker").removeAttribute('disabled');
+		gebyid("randomlinesSec").remove();
+		gebyid("clearRandomLines").classList.add("hidden");
+		gebyid("btnPicker").classList.remove("hidden");
+	}
+	gebyid("btnPicker").classList.remove("hidden");
+	gebyid("clearRandomLines").classList.add("hidden");
+	gebyid("randomLineSection").classList.add("hidden");
+	
+	gebyid("nbpl").selectedIndex = 0;
+	gebyid("numballs").selectedIndex = 0;
+	gebyid("firstSmallValue").selectedIndex = 0;
+	gebyid("randomLinesNumber").selectedIndex = 0;
+});
 
 // removes element from the dom
 function removeE(id){
@@ -393,11 +428,25 @@ function gebyid(id){
 
 // TBC
 gebyid("btnPicker").addEventListener("click", () => {
+    gebyid("btnPicker").setAttribute('disabled', '');
     let numberOfLines = gebyid("randomLinesNumber").value;
+    if (numberOfLines > count)
+    	numberOfLines = count;
     printRandomLines(numberOfLines);
+    gebyid("btnPicker").classList.add("hidden");
+    gebyid("clearRandomLines").classList.remove("hidden");
+});
+
+gebyid("clearRandomLines").addEventListener("click", () => {
+    gebyid("btnPicker").removeAttribute('disabled');
+    gebyid("randomlinesSec").remove();
+    gebyid("randomLinesNumber").selectedIndex = 0;
+    gebyid("clearRandomLines").classList.add("hidden");
+    gebyid("btnPicker").classList.remove("hidden");
 });
 
 function getRandomNumbers(howMany){
+	console.log("count: ", count);
     let arr = []; 
     let ran = Math.floor((Math.random() * count) + 1);
 
@@ -417,12 +466,18 @@ function getRandomNumbers(howMany){
 function printRandomLines(numberOfLines){
     	let para = "";
     	let randomLines = getRandomNumbers(numberOfLines);
-    	//console.log(randomLines)
+    	//console.log(randomL ines)
         randomLines.forEach((num, index) => {
 	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
         });
-
-    printLineX(randomLinesWrapper, para);   
+        
+        let p = document.createElement("div");
+	p.id = "randomlinesSec";
+	p.innerHTML = para;
+	p.classList.add("line");
+	p.style.textAlign = "center";
+	p.style.fontSize = "20px";
+	randomLinesWrapper.appendChild(p);  
 };
 
 function checkSetArrFunction(list) {
@@ -522,10 +577,7 @@ function fiveNumber(total){
 	let para = "";
 	for (a=small; a<= total - 2; a++)
 	{
-		line = a;
-		if (a == 10)
-			break;
-			
+		line = a;			
 		for (b=a+1; b<= total; b++)
 		{
 			line += "-" + b;
@@ -552,7 +604,7 @@ function fiveNumber(total){
 		}
 		
 	}
-	printLineX(wrapper, p);
+	printLineX(wrapper, para);
 }
 
 
