@@ -68,20 +68,22 @@
 			    <label for="consecutive">No line with 3 or More consecutive numbers</label>
 			  </div>
 			</fieldset>
-
-		  	
-		  	<button id="seeComb">Generate Combinations</button>
+			
+			<div class="action-btns"> 
+				<button id="seeComb">Generate Combinations</button>
+		  		<button id="clearComb" class="hidden">Clear List</button>
+			</div>
     		</div>
     		
     		<ol id="combinationsWrapper"></ol>
     	</section>
     	    	
-    	<section id="randomLineSection">
+    	<section id="randomLineSection" class="hidden">
     		<h4>Pick random lines to Play</h4>
     		<div class="inline-controls">
 	    		<label for="randomLinesNumber">How many lines to pick?</label>
 			<select name="randomLinesNumber" id="randomLinesNumber">
-			  	<option value=5>5</option>
+			  	<option value=5 selected>5</option>
 			  	<option value=6>6</option>
 			  	<option value=10>10</option>
 			  	<option value=25>25</option>
@@ -90,7 +92,10 @@
 			  	<option value=100>100</option>
 			</select>
 			
-			<button id="btnPicker">Pick Lines</button>
+			<div class="action-btns"> 
+				<button id="btnPicker">Pick Lines</button>
+		  		<button id="clearRandomLines" class="hidden">Clear List</button>
+			</div>
 		</div>
 				
     		<ol id="randomLinesWrapper"></ol>
