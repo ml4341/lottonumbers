@@ -117,7 +117,7 @@ function threeNumberR(total){
 
 function fourNumberR(total){
 	const small = Number(gebyid("firstSmallValue").value);
-	let para == "";
+	let para = "";
 	for (a=small; a<= total - 2; a++)
 	{
 		line = a;
