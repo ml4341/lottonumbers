@@ -446,13 +446,13 @@ gebyid("clearRandomLines").addEventListener("click", () => {
     gebyid("btnPicker").classList.remove("hidden");
 });
 
-function getRandomNumbers(howMany){
+function getRandomNumbers(previous, howMany){
 	console.log("count: ", count);
     let arr = []; 
     let ran = Math.floor((Math.random() * count) + 1);
 
     for (let i = 1; i <= howMany; i++){
-        if (arr.includes(ran) !== true){
+        if (arr.includes(ran) !== true && previous.includes(ran) !== true){
             arr.push(ran);
         }
         else{
@@ -466,8 +466,22 @@ function getRandomNumbers(howMany){
 
 function printRandomLines(numberOfLines){
     	let para = "";
-    	let randomLines = getRandomNumbers(numberOfLines);
+	let previousIds = [];
+	const prevChecked = gebyid("prev").checked;
+	if (prevChecked === true){
+		try {
+		previousIds = JSON.parse(localStorage.getItem("prev"));
+		}
+		catch(e){
+			localStorage.setItem("prev", JSON.stringify(previousIds));
+		}
+	}
+	
+    	let randomLines = getRandomNumbers(previousIds, numberOfLines);
     	//console.log(randomL ines)
+	previousIds = previousIds.concat(randomLines);
+	localStorage.setItem("prev", JSON.stringify(previousIds));
+	
         randomLines.forEach((num, index) => {
 	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
         });
