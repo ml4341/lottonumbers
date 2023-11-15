@@ -4,6 +4,12 @@ body{
                                                 
 }
 
+#givenSetCombinationsSection{
+
+	display: flex;
+	flex-direction: row;
+}
+
 .wlcm-logo{
 	text-align: center;
 	font-size: 75px;
