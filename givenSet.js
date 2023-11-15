@@ -16,7 +16,7 @@ generateFromlistBtn.addEventListener("click", () => {
 	ul2.innerHTML = `<h4>Three Number Combinations</h4>${threeNumberLines}`;
 	
 	let ul3 = document.createElement("ol");
-	ul3.innerHTML = `<h4>Three Number Combinations</h4>${fourNumberLines}`;
+	ul3.innerHTML = `<h4>Four Number Combinations</h4>${fourNumberLines}`;
 	
 	glcs.appendChild(ul1);
 	glcs.appendChild(ul2);
