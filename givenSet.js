@@ -1,19 +1,26 @@
-const givenSetCombinationsSection = gebyid("givenSetCombinationsSection");
-const givenSetInput = gebyid("givenSet");
-const generateFromSetBtn = gebyid("generateFromSetBtn");
+const glcs = gebyid("givenSetCombinationsSection");
+const givenlistInput = gebyid("givenSet");
+const generateFromlistBtn = gebyid("generateFromSetBtn");
+let count = 0;
 
+generateFromlistBtn.addEventListener("click", () => {
+	const set = givenlistInput.value.split("-");
+	const twoNumberLines = twoNumberLinesFromlist(set);
+	const threeNumberLines = threeNumberLinesFromlist(set);
+	const fourNumberLines = fourNumberLinesFromlist(set);
+	
+	let ul1 = document.createElement("ol");
+	ul1.innerHTML = `<h4>Two Number Combinations</h4>${twoNumberLines}`;
 
-generateFromSetBtn.addEventListener("click", () => {
-	const set = givenSetInput.value.split("-");
-	const twoNumberLines = twoNumberLinesFromSet(set);
-	const threeNumberLines = twoNumberLinesFromSet(set);
-	const fourNumberLines = twoNumberLinesFromSet(set);
+	let ul2 = document.createElement("ol");
+	ul2.innerHTML = `<h4>Three Number Combinations</h4>${threeNumberLines}`;
 	
-	document.createElemet("ol");
-	givenSetCombinationsSection.textContent
-	givenSetCombinationsSection.appendChild(threeNumberLinesFromSet);
-	givenSetCombinationsSection.appendChild(fourNumberLinesFromSet);
+	let ul3 = document.createElement("ol");
+	ul3.innerHTML = `<h4>Three Number Combinations</h4>${fourNumberLines}`;
 	
+	glcs.appendChild(ul1);
+	glcs.appendChild(ul2);
+	glcs.appendChild(ul3);
 	});
 
 
@@ -40,71 +47,63 @@ function cutEnd(text){
 
 };
 
-function twoNumberLinesFromSet(set){
+function twoNumberLinesFromlist(list){
 	let para = "\n";
-	for (a=0; a< set.length; a++)
+	for (a=0; a< list.length; a++)
 	{
 		line = list[a];
-		for (b=a+1; b< set.length; b++)
+		for (b=a+1; b< list.length; b++)
 		{
 			line += "-" + list[b];
 			count += 1;
-			//para += `<li id=${count}>${line}</li>`
-			para += line + "\n";
+			para += `<li id=${count}>${line}</li>`
 			line = cutEnd(line);
 		}
 	}
-	//printLineX(wrapper, para);
-	console.log("2 number lines::  ", para);
 	return para;
 };
 
 
-function threeNumberLinesFromSet(set){
+function threeNumberLinesFromlist(list){
 	let para = "\n";
-	for (a=0; a< set.length; a++)
+	for (a=0; a< list.length; a++)
 	{
 		line = list[a];
-		for (b=a+1; b< set.length; b++)
+		for (b=a+1; b< list.length; b++)
 		{
 			line += "-" + list[b];
-			for (c=b+1; c< set.length; c++)
+			for (c=b+1; c< list.length; c++)
 			{	
 				line += "-" + list[c];
 				count += 1;
-				//para += `<li id=${count}>${line}</li>`
-				para += line + "\n";
+				para += `<li id=${count}>${line}</li>`
 				line = cutEnd(line);
 			}
 			line = cutEnd(line);
 		}
 	}
-	
-	//printLineX(wrapper, para);
-	console.log("3 number lines::  ", para);
 	return para;
 };
 
 
-function fourNumberLinesFromSet(set){
+function fourNumberLinesFromlist(list){
 	//const small = Number(gebyid("firstSmallValue").value);
 	let para = "\n";
-	for (a=0; a< set.length - 2; a++)
+	for (a=0; a< list.length - 2; a++)
 	{
 		line = list[a];
-		for (b=a+1; b< set.length; b++)
+		for (b=a+1; b< list.length; b++)
 		{
 			line += "-" + list[b];
-			for (c=b+1; c< set.length; c++)
+			for (c=b+1; c< list.length; c++)
 			{	
 				line += "-" + list[c];
 				
-				for (d=c+1; d< set.length; d++)
+				for (d=c+1; d< list.length; d++)
 				{
 					line += "-" + list[d];
 					count += 1;
-					//para += `<li id=${count}>${line}</li>`
-					para += line + "\n";
+					para += `<li id=${count}>${line}</li>`
 					line = cutEnd(line);
 				}
 				line = cutEnd(line);
@@ -112,7 +111,5 @@ function fourNumberLinesFromSet(set){
 			line = cutEnd(line);
 		}
 	}
-	console.log("4 number lines::  ", para);
 	return para;
 };
-
