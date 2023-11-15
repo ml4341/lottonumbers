@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Numbers Page</title>
+    <link href="https://fonts.cdnfonts.com/css/flavors-2" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+     <header>
+  	<h1 class="wlcm-logo"> Feeling Lucky?</h1>
+	     <h2 class="wlcm-logo"> Sicelo's Number Generator</h2>
+  	<p>Get possible number combinations for various lottory systems around the world.</p>
+    </header>
+    
+    <main>
+    	<h1>Generate combinations from a Given set </h1>
+    	<label>Specify a set of numbers (Separeate by -):</label>
+    	<input id="givenSet" type=text placeholder="e.g 1-5-10-20-25"></input>
+    	
+    	<button id="generateFromSetBtn">Generate</button>
+    	
+    	<div id="givenSetCombinationsSection"></div>
+    </main>
+    <script src="givenSet.js"></script>
+  </body>
+</html>
