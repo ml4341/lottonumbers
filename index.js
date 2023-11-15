@@ -466,25 +466,35 @@ function getRandomNumbers(previous, howMany){
 
 function printRandomLines(numberOfLines){
     	let para = "";
-	let previousIds = [];
+	let previousIds = new Array();
 	const prevChecked = gebyid("prev").checked;
 	if (prevChecked === true){
 		try {
 		previousIds = JSON.parse(localStorage.getItem("prev"));
 		}
 		catch(e){
+			previousIds = [];
 			localStorage.setItem("prev", JSON.stringify(previousIds));
 		}
 	}
-	
-    	let randomLines = getRandomNumbers(previousIds, numberOfLines);
-    	//console.log(randomL ines)
-	previousIds = previousIds.concat(randomLines);
-	localStorage.setItem("prev", JSON.stringify(previousIds));
-	
-        randomLines.forEach((num, index) => {
+	if (previousIds === null)
+	{
+	    	let randomLines = getRandomNumbers([], numberOfLines);
+		localStorage.setItem("prev", JSON.stringify(randomLines));
+		
+		randomLines.forEach((num, index) => {
 	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
-        });
+        	});
+	}
+	else {
+		let randomLines = getRandomNumbers(previousIds, numberOfLines);
+		previousIds = previousIds.concat(randomLines);
+		localStorage.setItem("prev", JSON.stringify(previousIds));
+		
+		randomLines.forEach((num, index) => {
+	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+        	});
+	}
         
         let p = document.createElement("div");
 	p.id = "randomlinesSec";
@@ -708,6 +718,5 @@ function sevenNumber(total){
 	}
 	printLineX(wrapper, para);
 };
-
 
 
