@@ -11,7 +11,7 @@
   <body>
      <header>
   	<h1 class="wlcm-logo"> Feeling Lucky?</h1>
-	     <h2 class="wlcm-logo"> Sicelo's Number Generator</h2>
+	     <h2 class="wlcm-logo"> Intuitive Number Generator</h2>
   	<p>Get possible number combinations for various lottory systems around the world.</p>
     </header>
     
@@ -55,7 +55,7 @@
 			  
 			   <div class="inline-controls-more">
 				<label for="firstSmallNumber">First smallest number Start at: </label> <br />
-			  	<select name="firstSmallValue" id="firstSmallValue">
+			  	<select name="firstSmallValueValue" id="firstSmallValue">
 			  	  <option value=1 selected>1</option>
 				  <option value=5>5</option>
 				  <option value=10>10</option>
@@ -64,9 +64,10 @@
 			  	</select>
 		  	  </div>
 				<div class="inline-controls-more">
-				<label for="firstSmallNumber">First smallest number End at: </label> <br />
+				<label for="firstSmallNumberEnd">First smallest number End at: </label> <br />
 			  	<select name="firstSmallValueEnd" id="firstSmallValueEnd">
-			  	  <option value=1 selected>1</option>
+                  <option value="N/A" selected>Not Applicable</option>
+			  	  <option value=1>1</option>
 				  <option value=5>5</option>
 				  <option value=10>10</option>
 				  <option value=20>20</option>
@@ -76,7 +77,8 @@
 				<div class="inline-controls-more">
 				<label for="secondSmallNumber">Second smallest number End at: </label> <br />
 			  	<select name="secondSmallValueEnd" id="secondSmallValueEnd">
-			  	  <option value=1 selected>1</option>
+                  <option value="N/A" selected>Not Applicable</option>
+			  	  <option value=1>1</option>
 				  <option value=5>5</option>
 				  <option value=10>10</option>
 				  <option value=20>20</option>
@@ -104,13 +106,23 @@
     		<div class="inline-controls">
 	    		<label for="randomLinesNumber">How many lines to pick?</label>
 			<select name="randomLinesNumber" id="randomLinesNumber">
-			  	<option value=5 selected>5</option>
+                <option value=1 selected>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+			  	<option value=5>5</option>
 			  	<option value=6>6</option>
 			  	<option value=10>10</option>
 			  	<option value=25>25</option>
 			  	<option value=50>50</option>
 			  	<option value=75>75</option>
 			  	<option value=100>100</option>
+                <option value=150>150</option>
+                <option value=200>200</option>
+                <option value=250>250</option>
+                <option value=500>500</option>
+                <option value=750>750</option>
+                <option value=1000>1000</option>
 			</select>
 
 			<fieldset>
