@@ -117,11 +117,22 @@ function threeNumberR(total){
 
 function fourNumberR(total){
 	const small = Number(gebyid("firstSmallValue").value);
+    const firstEnd = Number(gebyid("firstSmallValueEnd").value);
+  	const secondEnd = Number(gebyid("secondSmallValueEnd").value);
+  
+  	if (firstEnd === "N/A"){
+      firstEnd = total - 2;
+    }
+  
+  	if (secondEnd === "N/A"){
+      secondEnd = total;
+    }
+  
 	let para = "";
-	for (a=small; a<= total - 2; a++)
+	for (a=small; a<= firstEnd; a++)
 	{
 		line = a;
-		for (b=a+1; b<= total; b++)
+		for (b=a+1; b<= secondEnd; b++)
 		{
 			line += "-" + b;
 			for (c=b+1; c<= total; c++)
@@ -476,25 +487,33 @@ function printRandomLines(numberOfLines){
 			previousIds = [];
 			localStorage.setItem("prev", JSON.stringify(previousIds));
 		}
+      
+      if (previousIds === null)
+      {
+              let randomLines = getRandomNumbers([], numberOfLines);
+          localStorage.setItem("prev", JSON.stringify(randomLines));
+
+          randomLines.forEach((num, index) => {
+          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+              });
+      }
+      else {
+          let randomLines = getRandomNumbers(previousIds, numberOfLines);
+          previousIds = previousIds.concat(randomLines);
+          localStorage.setItem("prev", JSON.stringify(previousIds));
+
+          randomLines.forEach((num, index) => {
+          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+              });
+      }
 	}
-	if (previousIds === null)
-	{
-	    	let randomLines = getRandomNumbers([], numberOfLines);
-		localStorage.setItem("prev", JSON.stringify(randomLines));
-		
-		randomLines.forEach((num, index) => {
-	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
-        	});
-	}
-	else {
-		let randomLines = getRandomNumbers(previousIds, numberOfLines);
-		previousIds = previousIds.concat(randomLines);
-		localStorage.setItem("prev", JSON.stringify(previousIds));
-		
-		randomLines.forEach((num, index) => {
-	    para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
-        	});
-	}
+  else {
+    randomLines.forEach((num, index) => {
+          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+              });
+  }
+  	
+	// C
         
         let p = document.createElement("div");
 	p.id = "randomlinesSec";
@@ -504,42 +523,6 @@ function printRandomLines(numberOfLines){
 	p.style.fontSize = "20px";
 	randomLinesWrapper.appendChild(p);  
 };
-
-function checkSetArrFunction(list) {
-	let setArr = [];
-	let index1 = 0;
-	let index2 = 0;
-
-	for (let i = 0; i < list.length; i++){
-	    
-	    index1 = list[i].split("-")[0];
-	    index2 = list[i].split("-")[1];
-	    
-	    if (!setArr.includes(index1))
-		setArr.push(index1)
-	    if (!setArr.includes(index2))
-		setArr.push(index2)
-	}
-
-	if (setArr.length !== 5)
-	{
-	    console.log("Lines do not belong to a set!");
-	    return false;
-        }
-	else
-	{
-	     console.log("Lines form a partion of the following set: !", setArr);
-	     return setArr;
-        }
-        
-        
-        
-        
-        
-        
-	     
-};
-
 
 
 // Previous combination generating functions
