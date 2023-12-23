@@ -117,17 +117,19 @@ function threeNumberR(total){
 
 function fourNumberR(total){
 	const small = Number(gebyid("firstSmallValue").value);
-    const firstEnd = Number(gebyid("firstSmallValueEnd").value);
-  	const secondEnd = Number(gebyid("secondSmallValueEnd").value);
+    let firstEnd = Number(gebyid("firstSmallValueEnd").value);
+  	let secondEnd = Number(gebyid("secondSmallValueEnd").value);
   
-  	if (firstEnd === "N/A"){
+  	if (firstEnd === 0){
       firstEnd = total - 2;
     }
   
-  	if (secondEnd === "N/A"){
+  	if (secondEnd === 0){
       secondEnd = total;
     }
-  
+  console.log("four numbers started....");
+   console.log("firstEnd: ",firstEnd);
+    console.log("secondEnd: ", secondEnd);
 	let para = "";
 	for (a=small; a<= firstEnd; a++)
 	{
@@ -135,6 +137,7 @@ function fourNumberR(total){
 		for (b=a+1; b<= secondEnd; b++)
 		{
 			line += "-" + b;
+
 			for (c=b+1; c<= total; c++)
 			{	
 				if (b === a+1 && c === b+1)

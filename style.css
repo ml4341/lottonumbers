@@ -4,6 +4,19 @@ body{
                                                 
 }
 
+#a_gen_set{
+	display: block;
+	text-decoration: none;
+	border-radius: 25px;
+	border: 1px solid black;
+	width: 300px;
+	height: 25px;
+	text-align: center;
+	color: red;
+	font: 25px;
+	margin: auto;
+}
+
 #givenSetCombinationsSection{
 
 	display: flex;
