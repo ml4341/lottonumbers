@@ -61,13 +61,38 @@ function cutEnd(text){
 // Counter functions 
 function oneNumber(total){
 	const small = Number(gebyid("firstSmallValue").value);
+	const numtype = Number(gebyid("numtype").value);
 	let para = "";
-	for (a=small; a<= total; a++)
-	{
-		count += 1;
-		para += `<li id=${count}>${a}</li>`
+
+	if (numtype !==0) {
+	    let even = 1;
+	    if (numtype === 2) {
+		for (let i = 1; i <= total; i++){
+		    even = (2*i);
+		     if (even > total)
+		        break;
+		    count += 1;
+		    para += `<li id=${count}>${even}</li>`
+		}
+	    }
+	    else{
+		let odd = 1;
+		for (let i = 0; i <= total; i++){
+		    odd = (2*i) + 1;
+		    if (odd > total)
+		        break;
+	    		count += 1;
+	    		para += `<li id=${count}>${odd}</li>`
+		}
+	    }
 	}
-		
+	else {
+		for (let a=small; a<= total; a++)
+		{
+			count += 1;
+			para += `<li id=${count}>${a}</li>`
+		}
+	}
 	printLineX(wrapper, para);
 };
 
@@ -206,140 +231,7 @@ function fiveNumberR(total){
 	printLineX(wrapper, para);
 };
 
-
-function sixNumberR(total){
-	const small = Number(gebyid("firstSmallValue").value);
-	let para = "";
-	for (a=small; a<= total - 2; a++)
-	{
-		line = a;
-		for (b=a+1; b<= total; b++)
-		{
-			line += "-" + b;
-			for (c=b+1; c<= total; c++)
-			{
-				if (b === a+1 && c === b+1)
-					continue;
-				line += "-" + c;
-				
-				for (d=c+1; d<= total; d++)
-				{
-					if (c === b+1 && d === c+1)
-						continue;
-					line += "-" + d;
-					
-					for (e=d+1; e<= total; e++)
-					{
-						if (d === c+1 && e === d+1)
-							continue;
-						line += "-" + e;
-
-						for (f=e+1; f<= total; f++)
-						{
-							if (e === d+1 && f === e+1)
-								continue;
-							line += "-" + f;
-							count += 1;
-							para += `<li id=${count}>${line}</li>`
-							line = cutEnd(line);
-						}
-						line = cutEnd(line);
-					}
-					line = cutEnd(line);
-				}
-				line = cutEnd(line);
-			}
-			line = cutEnd(line);
-		}
-	}
-	printLineX(wrapper, para);
-};
-
-function sevenNumberR(total){
-	const small = Number(gebyid("firstSmallValue").value);
-	let para = "";
-	for (a=small; a<= total - 2; a++)
-	{
-		line = a;
-		for (b=a+1; b<= total; b++)
-		{
-			line += "-" + b;
-			for (c=b+1; c<= total; c++)
-			{
-				if (b === a+1 && c === b+1)
-					continue;
-				line += "-" + c;
-				
-				for (d=c+1; d<= total; d++)
-				{
-					if (c === b+1 && d === c+1)
-						continue;
-					line += "-" + d;
-					
-					for (e=d+1; e<= total; e++)
-					{
-						if (d === c+1 && e === d+1)
-							continue;
-						line += "-" + e;
-						
-						for (f=e+1; f<= total; f++)
-						{
-							if (e === d+1 && f === e+1)
-								continue;
-							line += "-" + f;
-
-							for (g=f+1; g<= total; g++)
-							{
-								if (f === e+1 && g === f+1)
-									continue;
-								line += "-" + g;
-								count += 1;
-								para += `<li id=${count}>${line}</li>`
-								line = cutEnd(line);
-							}
-							line = cutEnd(line);
-						}
-						line = cutEnd(line);
-					}
-					line = cutEnd(line);
-				}
-				line = cutEnd(line);
-			}
-			line = cutEnd(line);
-		}
-	}
-	printLineX(wrapper, para);
-};
-
 // Event Listeners...
-// Scroll to the view of the line Selected
-/*
-gebyid("generate").addEventListener("click", () => {
-	let randomLine = Math.floor(Math.random() * count);
-
-	console.log("LINES NUMBER: ",count);
-	console.log("Random Line: ",randomLine);
-  	let target = gebyid(randomLine);
-  	target.style.color = "red";
-  	
-  	let rect = target.getBoundingClientRect();
-  	
-  	window.scrollTo({
-  		top: rect.top - 50,
-  		left: rect.left,
-  		behavior: "smooth",
-	});
-
-	for (const key in rect) {
-  		if (typeof rect[key] !== "function") {
-    	
-    		console.log(`${key} : ${rect[key]}`);
-  	}
-}
-  
-});
-
-*/
 
 function hideButtons() {
 	gebyid("seeComb").classList.add("hidden");
@@ -376,18 +268,6 @@ function callNumberFunctions(){
     				fiveNumberR(numBalls);
 			else
     				fiveNumber(numBalls);
-    			break;
-		case "6":
-			if (consecutiveChecked)
-    				sixNumberR(numBalls);
-			else
-    				sixNumber(numBalls);
-    			break;
-		case "7":
-    			if (consecutiveChecked)
-    				sevenNumberR(numBalls);
-			else
-    				sevenNumber(numBalls);
     			break;
 		default:
    			console.log(`Sorry, we are out of error.`);
@@ -479,52 +359,27 @@ function getRandomNumbers(previous, howMany){
 }
 
 function printRandomLines(numberOfLines){
-    	let para = "";
-	let previousIds = new Array();
-	const prevChecked = gebyid("prev").checked;
-	if (prevChecked === true){
-		try {
-		previousIds = JSON.parse(localStorage.getItem("prev"));
-		}
-		catch(e){
-			previousIds = [];
-			localStorage.setItem("prev", JSON.stringify(previousIds));
-		}
-      
-      if (previousIds === null)
-      {
-              let randomLines = getRandomNumbers([], numberOfLines);
-          localStorage.setItem("prev", JSON.stringify(randomLines));
-
-          randomLines.forEach((num, index) => {
-          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
-              });
-      }
-      else {
-          let randomLines = getRandomNumbers(previousIds, numberOfLines);
-          previousIds = previousIds.concat(randomLines);
-          localStorage.setItem("prev", JSON.stringify(previousIds));
-
-          randomLines.forEach((num, index) => {
-          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
-              });
-      }
+	let nbpl = gebyid("nbpl").value;
+	let para = '';
+	let randomLines = getRandomNumbers([], numberOfLines);
+	if (nbpl == 1) {
+	    console.log("nbpll is 1");
+	    let randomLinesJoined = randomLines.join("-");
+	    para = `<li id=${1}x>${randomLinesJoined}</li>`  
+	
 	}
-  else {
-    randomLines.forEach((num, index) => {
-          para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
+	else{
+		randomLines.forEach((num, index) => {
+          	para += `<li id=${index}x>${gebyid(num).textContent} (line ${num})</li>`
               });
-  }
-  	
-	// C
-        
-        let p = document.createElement("div");
+	}
+	let p = document.createElement("div");
 	p.id = "randomlinesSec";
 	p.innerHTML = para;
 	p.classList.add("line");
 	p.style.textAlign = "center";
 	p.style.fontSize = "20px";
-	randomLinesWrapper.appendChild(p);  
+	randomLinesWrapper.appendChild(p);
 };
 
 
