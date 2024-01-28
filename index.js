@@ -122,6 +122,8 @@ function threeNumberR(total){
 		line = a;
 		for (b=a+1; b<= total; b++)
 		{
+			if (b == a+1)
+				continue;
 			line += "-" + b;
 			for (c=b+1; c<= total; c++)
 			{	
@@ -161,6 +163,9 @@ function fourNumberR(total){
 		line = a;
 		for (b=a+1; b<= secondEnd; b++)
 		{
+			if (b == a+1)
+				continue;
+
 			line += "-" + b;
 
 			for (c=b+1; c<= total; c++)
@@ -198,6 +203,9 @@ function fiveNumberR(total){
 			
 		for (b=a+1; b<= total; b++)
 		{
+			if (b == a+1)
+				continue;
+
 			line += "-" + b;
 			for (c=b+1; c<= total; c++)
 			{
@@ -282,6 +290,14 @@ gebyid("seeComb").addEventListener("click", (e) => {
 	callNumberFunctions();
 	
 	gebyid("randomLineSection").classList.remove("hidden");
+});
+
+gebyid("hidelines").addEventListener("checked", (e) => {
+	if (gebyid("hidelines").checked){
+		gebyid("combinationsWrapper").classList.add("hidden");
+	} else {
+		gebyid("combinationsWrapper").classList.remove("hidden");
+	}
 });
 
 gebyid("clearComb").addEventListener("click", (e) => {
