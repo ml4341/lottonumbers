@@ -292,7 +292,7 @@ gebyid("seeComb").addEventListener("click", (e) => {
 	gebyid("randomLineSection").classList.remove("hidden");
 });
 
-gebyid("hidelines").addEventListener("checked", (e) => {
+gebyid("hidelines").addEventListener("click", (e) => {
 	if (gebyid("hidelines").checked){
 		gebyid("combinationsWrapper").classList.add("hidden");
 	} else {
